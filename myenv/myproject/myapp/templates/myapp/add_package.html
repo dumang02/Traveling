@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Packages..</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{% static 'myapp\assets\img\favicon.ico' %}" rel="icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    
+        <!-- Libraries Stylesheet -->
+        <link href="{% static 'myapp\assets\lib\owlcarousel\assets\owl.carousel.min.css'%}" rel="stylesheet">
+        <link href="{% static 'myapp\assets\lib\tempusdominus\css\tempusdominus-bootstrap-4.min.css'%}" rel="stylesheet" />
+    
+        <!-- Customized Bootstrap Stylesheet -->
+        <link  rel="stylesheet"  href="{% static 'myapp\assets\css\style.css' %}">
+
+        <style>
+            body {
+                background: url(myapp/static/myapp/assets/img/pack4.jpg) no-repeat center center fixed;
+                background-size: cover;
+                font-family: 'Arial', sans-serif;
+            }
+            .registration-form {
+                width: 400px;
+                margin: 100px auto;
+                padding: 30px 25px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            }
+            .registration-form h2 {
+                margin-bottom: 30px;
+                font-size: 25px;
+                font-weight: 700;
+                text-align: center;
+            }
+            .form-control {
+                border-radius: 25px;
+            }
+            .btn-primary {
+                border-radius: 25px;
+                background-color: #007bff;
+                border: none;
+            }
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container-fluid position-relative nav-bar p-0">
+            <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                    <a href="" class="navbar-brand">
+                        <h1 class="m-0 text-primary"><span class="text-dark">Easy</span>trip</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto py-0">
+                            <a href="{% url 'ad_home' %}" class="nav-item nav-link active">Home</a>
+                            <a href="" class="nav-item nav-link">Bookin Detail</a>
+                            <a href="{% url 'ad_package' %}" class="nav-item nav-link"> ADD Tour Packages</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            </div>
+                            <a href="" class="nav-item nav-link">Feedback</a>
+                            <a href="{%url 'logout'%}" class="nav-item nav-link">LOGOUT</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        
+        </div>
+        <form  class="form"  method="POST"  action="{% url 'ad_package' %}"  enctype="multipart/form-data ">
+            {% csrf_token %}
+
+            <div class="registration-form">
+
+                    <h2>Add Packages...</h2>
+
+                    <div class="form-group">
+                        <input type="File"   name="pic1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="Place" nmae="place1" placeholder="Place" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="days" nmae="days1" placeholder="days" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="type" nmae="type" placeholder="Type" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="Person" nmae="person1" placeholder="Person" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="textarea" class="form-control" id="Explore" nmae="explor1" placeholder=" Explore" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="Price" nmae="price1" placeholder=" Price" required>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary btn-block">ADD</button>
+                
+            </div>
+        </form>
+
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Custom JS -->
+        <script>
+            document.getElementById('regForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                validateForm();
+            });
+
+            function validateForm() {
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    return;
+                }
+
+                // Here you can add code to submit the form data to your server
+
+                alert('Registration successful!');
+            }
+        </script>
+    </body>
+</html>
